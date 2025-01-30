@@ -36,12 +36,12 @@ resources:
 # Cert-Manager
 - ../common/cert-manager/cert-manager/overlays/on-premise
 - ../common/cert-manager/kubeflow-issuer/base
-# # Istio
-# - ../common/istio-1-22/istio-crds/base
-# - ../common/istio-1-22/istio-namespace/base
-# - ../common/istio-1-22/istio-install/overlays/oauth2-proxy
-# # oauth2-proxy
-# # NOTE: only uncomment ONE of the following overlays, depending on your cluster type
+# Istio
+- ../common/istio-1-22/istio-crds/base
+- ../common/istio-1-22/istio-namespace/base
+- ../common/istio-1-22/istio-install/overlays/on-premise-oauth2-proxy
+# oauth2-proxy
+# NOTE: only uncomment ONE of the following overlays, depending on your cluster type
 # - ../common/oauth2-proxy/overlays/m2m-dex-only     # for all clusters
 # #- ../common/oauth2-proxy/overlays/m2m-dex-and-kind # for KIND clusters (allows K8S JWTs for gateway auth)
 # #- ../common/oauth2-proxy/overlays/m2m-dex-and-eks  # for EKS clusters (NOTE: requires you to configure issuer, see overlay)
