@@ -49,7 +49,7 @@ resources:
 # Dex
 - ../common/dex/overlays/oauth2-proxy
 # KNative
-#- ../common/knative/knative-serving/overlays/gateways
+- ../common/knative/knative-serving/overlays/on-premise-gateways
 # # Uncomment the following line if `knative-eventing` is required
 # # - ../common/knative/knative-eventing/base
 # - ../common/istio-1-22/cluster-local-gateway/base
@@ -122,3 +122,17 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
   - name: quay.io/oauth2-proxy/oauth2-proxy
     newName: fronted-cn-beijing.cr.volces.com/container/oauth2-proxy/oauth2-proxy
+  - name: gcr.io/knative-releases/knative.dev/serving/cmd/activator
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/activator
+  - name: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/autoscaler
+  - name: gcr.io/knative-releases/knative.dev/serving/cmd/controller
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/controller
+  - name: gcr.io/knative-releases/knative.dev/net-istio/cmd/controller
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/net-istio/cmd/controller
+  - name: gcr.io/knative-releases/knative.dev/net-istio/cmd/webhook
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/net-istio/cmd/webhook
+  - name: gcr.io/knative-releases/knative.dev/serving/cmd/queue
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/queue
+  - name: gcr.io/knative-releases/knative.dev/serving/cmd/webhook
+    newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/webhook
