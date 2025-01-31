@@ -65,8 +65,8 @@ resources:
 
 # Kubeflow Pipelines
 - ../apps/pipeline/upstream/env/cert-manager/platform-agnostic-multi-user
-# # Katib
-# - ../apps/katib/upstream/installs/katib-with-kubeflow
+# Katib
+- ../apps/katib/upstream/installs/katib-with-kubeflow
 # # Central Dashboard
 # - ../apps/centraldashboard/overlays/oauth2-proxy
 # # Admission Webhook
@@ -122,8 +122,15 @@ configMapGenerator:
   files:
   - sync.py
   behavior: replace
+- name: katib-config
+  behavior: replace
+  files:
+    - katib-config.yaml
+  options:
+    disableNameSuffixHash: true
 patches:
   - path: ./patches/configmap-pipeline-install-config.yaml
+  - path: ./patches/configmap-trial-templates.yaml
 images:
   - name: ghcr.io/dexidp/dex
     newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
@@ -175,3 +182,13 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/workflow-controller
   - name: docker.io/metacontrollerio/metacontroller
     newName: fronted-cn-beijing.cr.volces.com/container/metacontrollerio/metacontroller
+  - name: docker.io/kubeflowkatib/katib-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/katib-controller
+  - name: docker.io/kubeflowkatib/katib-db-manager
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/katib-db-manager
+  - name: mysql
+    newName: fronted-cn-beijing.cr.volces.com/container/mysql
+  - name: docker.io/kubeflowkatib/katib-ui
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/katib-ui
+  - name: docker.io/kubeflowkatib/pytorch-mnist-cpu
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/pytorch-mnist-cpu

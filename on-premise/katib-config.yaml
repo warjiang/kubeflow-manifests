@@ -1,0 +1,59 @@
+---
+apiVersion: config.kubeflow.org/v1beta1
+kind: KatibConfig
+init:
+  controller:
+    webhookPort: 8443
+    trialResources:
+      - Job.v1.batch
+      - TFJob.v1.kubeflow.org
+      - PyTorchJob.v1.kubeflow.org
+      - MPIJob.v1.kubeflow.org
+      - XGBoostJob.v1.kubeflow.org
+      - MXJob.v1.kubeflow.org
+runtime:
+  metricsCollectors:
+    - kind: StdOut
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/file-metrics-collector:v0.17.0
+    - kind: File
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/file-metrics-collector:v0.17.0
+    - kind: TensorFlowEvent
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/tfevent-metrics-collector:v0.17.0
+      resources:
+        limits:
+          memory: 1Gi
+  suggestions:
+    - algorithmName: random
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-hyperopt:v0.17.0
+    - algorithmName: tpe
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-hyperopt:v0.17.0
+    - algorithmName: grid
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-optuna:v0.17.0
+    - algorithmName: hyperband
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-hyperband:v0.17.0
+    - algorithmName: bayesianoptimization
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-skopt:v0.17.0
+    - algorithmName: cmaes
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-goptuna:v0.17.0
+    - algorithmName: sobol
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-goptuna:v0.17.0
+    - algorithmName: multivariate-tpe
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-optuna:v0.17.0
+    - algorithmName: enas
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-enas:v0.17.0
+      resources:
+        limits:
+          memory: 400Mi
+    - algorithmName: darts
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-darts:v0.17.0
+    - algorithmName: pbt
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/suggestion-pbt:v0.17.0
+      persistentVolumeClaimSpec:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 5Gi
+  earlyStoppings:
+    - algorithmName: medianstop
+      image: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/earlystopping-medianstop:v0.17.0
