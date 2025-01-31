@@ -81,8 +81,8 @@ resources:
 - ../apps/pvcviewer-controller/upstream/base
 # Volumes Web App
 - ../apps/volumes-web-app/upstream/overlays/istio
-# # Tensorboards Controller
-# - ../apps/tensorboard/tensorboard-controller/upstream/overlays/kubeflow
+# Tensorboards Controller
+- ../apps/tensorboard/tensorboard-controller/upstream/overlays/kubeflow
 # # Tensorboard Web App
 # - ../apps/tensorboard/tensorboards-web-app/upstream/overlays/istio
 # # Training Operator
@@ -210,3 +210,5 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubebuilder/kube-rbac-proxy
   - name: docker.io/kubeflownotebookswg/volumes-web-app
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/volumes-web-app
+  - name:  docker.io/kubeflownotebookswg/tensorboard-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/tensorboard-controller
