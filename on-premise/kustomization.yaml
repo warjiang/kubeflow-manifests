@@ -63,8 +63,8 @@ resources:
 - ../common/istio-1-22/kubeflow-istio-resources/base
 
 
-## Kubeflow Pipelines
-#- ../apps/pipeline/upstream/env/cert-manager/platform-agnostic-multi-user
+# Kubeflow Pipelines
+- ../apps/pipeline/upstream/env/cert-manager/platform-agnostic-multi-user
 # # Katib
 # - ../apps/katib/upstream/installs/katib-with-kubeflow
 # # Central Dashboard
@@ -117,6 +117,13 @@ resources:
 # Uncomment to enable restricted level standards for dynamic namespaces
 # - ../contrib/security/PSS/dynamic/restricted
 
+configMapGenerator:
+- name: kubeflow-pipelines-profile-controller-code
+  files:
+  - sync.py
+  behavior: replace
+patches:
+  - path: ./patches/configmap-pipeline-install-config.yaml
 images:
   - name: ghcr.io/dexidp/dex
     newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
@@ -138,3 +145,33 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/knative-releases/knative.dev/serving/cmd/webhook
   - name: docker.io/istio/proxyv2
     newName: fronted-cn-beijing.cr.volces.com/container/istio/proxyv2
+  - name: gcr.io/ml-pipeline/cache-server
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/cache-server
+  - name: python
+    newName: fronted-cn-beijing.cr.volces.com/container/python
+  - name: gcr.io/ml-pipeline/metadata-envoy
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/metadata-envoy
+  - name: gcr.io/tfx-oss-public/ml_metadata_store_server
+    newName: fronted-cn-beijing.cr.volces.com/container/tfx-oss-public/ml_metadata_store_server
+  - name: gcr.io/ml-pipeline/metadata-writer
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/metadata-writer
+  - name: gcr.io/ml-pipeline/minio
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/minio
+  - name: gcr.io/ml-pipeline/api-server
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/api-server
+  - name: gcr.io/ml-pipeline/persistenceagent
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/persistenceagent
+  - name: gcr.io/ml-pipeline/scheduledworkflow
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/scheduledworkflow
+  - name: gcr.io/ml-pipeline/frontend
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/frontend
+  - name: gcr.io/ml-pipeline/viewer-crd-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/viewer-crd-controller
+  - name: gcr.io/ml-pipeline/visualization-server
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/visualization-server
+  - name: gcr.io/ml-pipeline/mysql
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/mysql
+  - name: gcr.io/ml-pipeline/workflow-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/ml-pipeline/workflow-controller
+  - name: docker.io/metacontrollerio/metacontroller
+    newName: fronted-cn-beijing.cr.volces.com/container/metacontrollerio/metacontroller
