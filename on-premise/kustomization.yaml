@@ -77,8 +77,8 @@ resources:
 - ../apps/jupyter/notebook-controller/upstream/overlays/kubeflow
 # Profiles + KFAM
 - ../apps/profiles/upstream/overlays/kubeflow
-# # PVC Viewer
-# - ../apps/pvcviewer-controller/upstream/base
+# PVC Viewer
+- ../apps/pvcviewer-controller/upstream/base
 # # Volumes Web App
 # - ../apps/volumes-web-app/upstream/overlays/istio
 # # Tensorboards Controller
@@ -204,3 +204,7 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/kfam
   - name: docker.io/kubeflownotebookswg/profile-controller
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/profile-controller
+  - name: docker.io/kubeflownotebookswg/pvcviewer-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/pvcviewer-controller
+  - name: gcr.io/kubebuilder/kube-rbac-proxy
+    newName: fronted-cn-beijing.cr.volces.com/container/kubebuilder/kube-rbac-proxy
