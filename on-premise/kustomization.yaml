@@ -67,8 +67,8 @@ resources:
 - ../apps/pipeline/upstream/env/cert-manager/platform-agnostic-multi-user
 # Katib
 - ../apps/katib/upstream/installs/katib-with-kubeflow
-# # Central Dashboard
-# - ../apps/centraldashboard/overlays/oauth2-proxy
+# Central Dashboard
+- ../apps/centraldashboard/overlays/oauth2-proxy
 # # Admission Webhook
 # - ../apps/admission-webhook/upstream/overlays/cert-manager
 # # Jupyter Web App
@@ -192,3 +192,5 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/katib-ui
   - name: docker.io/kubeflowkatib/pytorch-mnist-cpu
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflowkatib/pytorch-mnist-cpu
+  - name: docker.io/kubeflownotebookswg/centraldashboard
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/centraldashboard
