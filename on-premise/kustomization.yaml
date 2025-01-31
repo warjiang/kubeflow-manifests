@@ -73,8 +73,8 @@ resources:
 - ../apps/admission-webhook/upstream/overlays/cert-manager
 # Jupyter Web App
 - ../apps/jupyter/jupyter-web-app/upstream/overlays/istio
-# # Notebook Controller
-# - ../apps/jupyter/notebook-controller/upstream/overlays/kubeflow
+# Notebook Controller
+- ../apps/jupyter/notebook-controller/upstream/overlays/kubeflow
 # # Profiles + KFAM
 # - ../apps/profiles/upstream/overlays/kubeflow
 # # PVC Viewer
@@ -198,3 +198,5 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/poddefaults-webhook
   - name: docker.io/kubeflownotebookswg/jupyter-web-app
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/jupyter-web-app
+  - name: docker.io/kubeflownotebookswg/notebook-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/notebook-controller
