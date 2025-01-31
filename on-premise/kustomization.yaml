@@ -46,10 +46,10 @@ resources:
 - ../common/oauth2-proxy/overlays/on-premise-m2m-dex-and-kind # for KIND clusters (allows K8S JWTs for gateway auth)
 # - ../common/oauth2-proxy/overlays/m2m-dex-and-eks  # for EKS clusters (NOTE: requires you to configure issuer, see overlay)
 
-# # Dex
-# - ../common/dex/overlays/oauth2-proxy
-# # KNative
-# - ../common/knative/knative-serving/overlays/gateways
+# Dex
+- ../common/dex/overlays/oauth2-proxy
+# KNative
+#- ../common/knative/knative-serving/overlays/gateways
 # # Uncomment the following line if `knative-eventing` is required
 # # - ../common/knative/knative-eventing/base
 # - ../common/istio-1-22/cluster-local-gateway/base
@@ -105,7 +105,7 @@ resources:
 # Here is the internal documentation for Seldon: - ../contrib/seldon/README.md
 # - ../contrib/seldon/seldon-core-operator/overlays/application
 
-components:
+#components:
 # Pod Security Standards
 # https://kubernetes.io/docs/concepts/security/pod-security-standards/
 # Uncomment to enable baseline level standards
@@ -116,3 +116,9 @@ components:
 # - ../contrib/security/PSS/dynamic/baseline
 # Uncomment to enable restricted level standards for dynamic namespaces
 # - ../contrib/security/PSS/dynamic/restricted
+
+images:
+  - name: ghcr.io/dexidp/dex
+    newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
+  - name: quay.io/oauth2-proxy/oauth2-proxy
+    newName: fronted-cn-beijing.cr.volces.com/container/oauth2-proxy/oauth2-proxy

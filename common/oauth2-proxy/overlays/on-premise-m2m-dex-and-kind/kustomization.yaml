@@ -36,3 +36,4 @@ patches:
 images:
   - name: docker.io/bitnami/kubectl
     newName: fronted-cn-beijing.cr.volces.com/container/bitnami/kubectl
+
