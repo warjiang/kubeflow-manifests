@@ -83,8 +83,8 @@ resources:
 - ../apps/volumes-web-app/upstream/overlays/istio
 # Tensorboards Controller
 - ../apps/tensorboard/tensorboard-controller/upstream/overlays/kubeflow
-# # Tensorboard Web App
-# - ../apps/tensorboard/tensorboards-web-app/upstream/overlays/istio
+# Tensorboard Web App
+- ../apps/tensorboard/tensorboards-web-app/upstream/overlays/istio
 # # Training Operator
 # - ../apps/training-operator/upstream/overlays/kubeflow
 # # User namespace
@@ -210,5 +210,7 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubebuilder/kube-rbac-proxy
   - name: docker.io/kubeflownotebookswg/volumes-web-app
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/volumes-web-app
-  - name:  docker.io/kubeflownotebookswg/tensorboard-controller
+  - name: docker.io/kubeflownotebookswg/tensorboard-controller
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/tensorboard-controller
+  - name: docker.io/kubeflownotebookswg/tensorboards-web-app
+    newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/tensorboards-web-app
