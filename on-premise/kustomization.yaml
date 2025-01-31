@@ -87,12 +87,12 @@ resources:
 - ../apps/tensorboard/tensorboards-web-app/upstream/overlays/istio
 # Training Operator
 - ../apps/training-operator/upstream/overlays/kubeflow
-# # User namespace
-# - ../common/user-namespace/base
+# User namespace
+- ../common/user-namespace/base
 
-# # KServe
-# - ../contrib/kserve/kserve
-# - ../contrib/kserve/models-web-app/overlays/kubeflow
+# KServe
+- ../contrib/kserve/kserve
+- ../contrib/kserve/models-web-app/overlays/kubeflow
 
 # Ray and Seldon resources (commented out by default)
 # Ray does not support Istio yet and integration is in alpha state.
@@ -131,6 +131,7 @@ configMapGenerator:
 patches:
   - path: ./patches/configmap-pipeline-install-config.yaml
   - path: ./patches/configmap-trial-templates.yaml
+  - path: ./patches/clusterstoragecontainer-default.yaml
 images:
   - name: ghcr.io/dexidp/dex
     newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
@@ -216,3 +217,28 @@ images:
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflownotebookswg/tensorboards-web-app
   - name:  kubeflow/training-operator
     newName: fronted-cn-beijing.cr.volces.com/container/kubeflow/training-operator
+
+  - name: kserve/kserve-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/kserve-controller
+  - name: kserve/models-web-app
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/models-web-app
+  - name:  kserve/huggingfaceserver
+    newName: fronted-cn-beijing.cr.volces.com/container/ kserve/huggingfaceserver
+  - name: kserve/lgbserver
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/lgbserver
+  - name: docker.io/seldonio/mlserver
+    newName: fronted-cn-beijing.cr.volces.com/container/seldonio/mlserver
+  - name:  kserve/paddleserver
+    newName: fronted-cn-beijing.cr.volces.com/container/ kserve/paddleserver
+  - name: kserve/pmmlserver
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/pmmlserver
+  - name: kserve/sklearnserver
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/sklearnserver
+  - name: tensorflow/serving
+    newName: fronted-cn-beijing.cr.volces.com/container/tensorflow/serving
+  - name: pytorch/torchserve-kfs
+    newName: fronted-cn-beijing.cr.volces.com/container/pytorch/torchserve-kfs
+  - name: nvcr.io/nvidia/tritonserver
+    newName: fronted-cn-beijing.cr.volces.com/container/nvidia/tritonserver
+  - name: kserve/xgbserver
+    newName: fronted-cn-beijing.cr.volces.com/container/kserve/xgbserver
