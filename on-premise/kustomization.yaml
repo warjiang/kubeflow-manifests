@@ -34,7 +34,7 @@ sortOptions:
 
 resources:
 # Cert-Manager
-- ../common/cert-manager/cert-manager/overlays/on-premise
+- ../common/cert-manager/cert-manager/base
 - ../common/cert-manager/kubeflow-issuer/base
 # Istio
 - ../common/istio-1-22/istio-crds/base
@@ -133,6 +133,12 @@ patches:
   - path: ./patches/configmap-trial-templates.yaml
   - path: ./patches/clusterstoragecontainer-default.yaml
 images:
+  - name: quay.io/jetstack/cert-manager-controller
+    newName: fronted-cn-beijing.cr.volces.com/container/jetstack/cert-manager-controller
+  - name: quay.io/jetstack/cert-manager-cainjector
+    newName: fronted-cn-beijing.cr.volces.com/container/jetstack/cert-manager-cainjector
+  - name: quay.io/jetstack/cert-manager-webhook
+    newName: fronted-cn-beijing.cr.volces.com/container/jetstack/cert-manager-webhook
   - name: ghcr.io/dexidp/dex
     newName: fronted-cn-beijing.cr.volces.com/container/dexidp/dex
   - name: quay.io/oauth2-proxy/oauth2-proxy

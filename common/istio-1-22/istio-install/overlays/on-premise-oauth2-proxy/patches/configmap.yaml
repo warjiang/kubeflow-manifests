@@ -1914,7 +1914,7 @@ data:
           "tracer": "none"
         },
         "proxy_init": {
-          "image": "fronted-cn-beijing.cr.volces.com/container/proxyv2"
+          "image": "fronted-cn-beijing.cr.volces.com/container/istio/proxyv2:1.22.1"
         },
         "remotePilotAddress": "",
         "sds": {
