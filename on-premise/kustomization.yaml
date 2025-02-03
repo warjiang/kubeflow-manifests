@@ -128,6 +128,11 @@ configMapGenerator:
     - katib-config.yaml
   options:
     disableNameSuffixHash: true
+- files:
+  - spawner_ui_config.yaml
+  name: config
+  namespace: kubeflow
+  behavior: replace
 patches:
   - path: ./patches/configmap-pipeline-install-config.yaml
   - path: ./patches/configmap-trial-templates.yaml
