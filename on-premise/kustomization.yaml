@@ -138,6 +138,14 @@ patches:
   - path: ./patches/configmap-trial-templates.yaml
   - path: ./patches/clusterstoragecontainer-default.yaml
   - path: ./patches/configmap-istio-sidecar-injector.yaml
+  - target:
+      kind: Deployment
+      name: volumes-web-app-deployment
+      namespace: kubeflow
+    patch: |
+        - op: replace
+          path: /spec/template/spec/containers/0/env/4/value
+          value: fronted-cn-beijing.cr.volces.com/container/filebrowser/filebrowser:v2.25.0
 images:
   - name: quay.io/jetstack/cert-manager-controller
     newName: fronted-cn-beijing.cr.volces.com/container/jetstack/cert-manager-controller
